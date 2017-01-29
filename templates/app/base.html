@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">  
+    <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -16,6 +16,7 @@
       <tr>
         <th>Create Time</th>
         <th>Incident No.</th>
+        <th>CallerId</th>
         <th>Short Description</th>
         <th>Responded Date/Time</th>
         <th>Resolved Date/Time</th>
@@ -26,6 +27,7 @@
       <tr>
         <td>{{incident.createTime}}</td>
         <td>{{incident.incidentNum}}</td>
+        <td>{{incident.callerId}}</td>
         <td>{{incident.shortDesc}}</td>
         <td>{{incident.respondedTime}}</td>
         <td>{{incident.resolvedTime}}</td>

@@ -39,7 +39,7 @@ def index(request):
                             'createTime':       results[n].get ("sys_created_on"),
                             'incidentNum':      results[n].get ("number"),
                             'shortDesc':        results[n].get("short_description"),
-                            'callerInfo':       results[n].get("caller_id"),
+                            'callerId':         results[n].get("caller_id").get("value"),
                             'respondedTime':    results[n].get("sys_updated_on"),
                             'resolvedTime':     results[n].get("resolved_at"),
                             }
