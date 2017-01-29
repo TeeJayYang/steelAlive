@@ -1,11 +1,14 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--CSS-->
     <!--JAVASCRIPT START-->
     <script type="text/javascript" >
 		$(function () {
@@ -167,48 +170,65 @@
   <!--JAVASCRIPT END-->
   <title>{{ title }}</title>
   </head>
-  <body style="padding-left:5%; padding-right:5%">
-    <!--HISTORICS START-->
-    <h1 style="text-align: center">Historics</h1>
-    <div class="clearfix" >
-    <table class="table table-striped" style="margin:auto">
-      <thead>
-      <tr>
-        <th>Create Time</th>
-        <th>Incident No.</th>
-        <th>CallerId</th>
-        <th>Short Description</th>
-        <th>Responded Date/Time</th>
-        <th>Resolved Date/Time</th>
-      </tr>
-      </thead>
-      <tbody>
-      {% for incident in resultList %}
-      <tr>
-        <td>{{incident.createTime}}</td>
-        <td>{{incident.incidentNum}}</td>
-        <td>{{incident.callerId}}</td>
-        <td>{{incident.shortDesc}}</td>
-        <td>{{incident.respondedTime}}</td>
-        <td>{{incident.resolvedTime}}</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-    </table>
-    <div class="clearfix">
-    <!--HISTORICS END-->
-    <!--STATS START-->
-    <h1 style="text-align: center"><b>Statistics</b></h1>
-		<button type="button" class="btn btn-default pull-right" style="vertical-align: middle">Custom Graph</button>
-		<div style="padding: 25px"></div>
-		<div class="clearfix">
-		<div id="typeofincidents" class ="pull-left" style="width:45%; height:300px"></div>
-		<div id="incidentsbymonth"  class ="pull-right" style="width:45%; height:300px"></di>
-		</div>
-		<div class="clearfix">
-		<div id="incidentsbyyear" class ="pull-left" style="width:45%; height:300px" ></div>
-		<div id="incidentsbyday" class ="pull-right" style="width:45%; height:300px"></div>
-		</div>
-    <!--STATS END-->
+  <nav class="sticky" style="text-align: center;background-color: #FFB856;position: fixed;
+  width: 100%; left: 0; top: 0; z-index: 100; border-top: 0">
+		<a href="#home" style="color: white; 	display: inline-block;text-align: center;text-decoration: none;transition: 0.3s; font-size: 17px">
+<div style="width: 119px; float: left; padding: 10px 0; align-self: center"><b>Home</b></div></a>
+		<a href="#history" style="color: white;	display: inline-block; text-align: center;text-decoration: none; transition: 0.3s;font-size: 17px">
+      <div style="width: 119px; float: left; 	display: inline-block;padding: 10px 0;align-self: center"><b>History</b></div></a>
+		<a href="#statistics" style="color: white; text-align: center; 	display: inline-block;text-decoration: none;transition: 0.3s;font-size: 17px; hover:background-color:#E28400">
+      <div style="width: 119px; float: left; padding: 10px 0;align-self: center"><b>Statistics</b></div></a>
+		<a href="#feedback" style="color: white; text-align: center; 	display: inline-block;text-decoration: none;  transition: 0.3s;  font-size: 17px; hover:background-color:#E28400">
+      <div style="width: 119px; float: left; padding: 10px 0; align-self: center"><b>Feedback</b></div></a>
+	</nav>
+  <body>
+      <a name="history"></a>
+      <div style=" padding-top: 60px; padding-left:5%; padding-right:5%">
+      <!--HISTORICS START-->
+      <h1 style="text-align: center"><b>History</b></h1>
+      <div class="clearfix" >
+        <table class="table table-striped" style="margin:auto">
+          <thead>
+          <tr>
+            <th>Create Time</th>
+            <th>Incident No.</th>
+            <th>CallerId</th>
+            <th>Short Description</th>
+            <th>Responded Date/Time</th>
+            <th>Resolved Date/Time</th>
+          </tr>
+          </thead>
+          <tbody>
+            {% for incident in resultList %}
+            <tr>
+              <td>{{incident.createTime}}</td>
+              <td>{{incident.incidentNum}}</td>
+              <td>{{incident.callerId}}</td>
+              <td>{{incident.shortDesc}}</td>
+              <td>{{incident.respondedTime}}</td>
+              <td>{{incident.resolvedTime}}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+          </table>
+        </div>
+      </div>
+      <!--HISTORICS END-->
+      <a name="statistics"></a>
+      <div style="padding: 25px" id:"statistics"></div>
+      <!--STATS START-->
+
+      <h1 style="text-align: center"><b>Statistics</b></h1>
+  		<button type="button" class="btn btn-default pull-right" style="vertical-align: middle">Custom Graph</button>
+  		<div style="padding: 25px"></div>
+  		<div class="clearfix">
+  		<div id="typeofincidents" class ="pull-left" style="width:45%; height:300px"></div>
+  		<div id="incidentsbymonth"  class ="pull-right" style="width:45%; height:300px"></div>
+  		</div>
+  		<div class="clearfix">
+  		<div id="incidentsbyyear" class ="pull-left" style="width:45%; height:300px" ></div>
+  		<div id="incidentsbyday" class ="pull-right" style="width:45%; height:300px"></div>
+    </div>
+      <!--STATS END-->
   </body>
 </html>
