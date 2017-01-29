@@ -1,41 +1,431 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+>>>>>>> 67bf112a377865f72736c5364c4886a159fc356a
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>{{ title }}</title>
+    <!--CSS-->
+    <!--JAVASCRIPT START-->
+    <script type="text/javascript" >
+		$(function () {
+		    Highcharts.setOptions({
+		    	colors: ['#F6511D', '#FFB400', '#FF9F1C', '#FF8811', '#FF7F11']
+		    });
+		    var chart;
+			 $(document).ready(function () {
+		        Highcharts.chart('typeofincidents', {
+		            chart: {
+		                plotBackgroundColor: null,
+		                plotBorderWidth: null,
+		                plotShadow: false,
+		                type: 'pie'
+		            },
+		            title: {
+		                text: 'Type of Incidents, {current.month} {current.year}'
+		            },
+		            tooltip: {
+		                pointFormat: '<b>{point.percentage:.1f}%</b>'
+		            },
+		            plotOptions: {
+		                pie: {
+		                    allowPointSelect: true,
+		                    cursor: 'pointer',
+		                    dataLabels: {
+		                        enabled: false
+		                    },
+		                    showInLegend: true
+		                }
+		            },
+		            series: [{
+		                colorByPoint: true,
+		                data: [{
+		                    name: 'Type 1',
+		                    y: 56.33
+		                }, {
+		                    name: 'Type 2',
+		                    y: 24.03,
+		                    sliced: true,
+		                    selected: true
+		                }, {
+		                    name: 'Type 3',
+		                    y: 10.38
+		                }, {
+		                    name: 'Type 4',
+		                    y: 4.77
+		                }, {
+		                    name: 'Type 5',
+		                    y: 0.91
+		                }, {
+		                    name: 'Type 6',
+		                    y: 0.2
+		                }]
+		            }]
+		        });
+		    });
+		});
+		$(function () {
+		     Highcharts.chart('incidentsbymonth', {
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: 'Number of Incidents by Month, {current.year}'
+		        },
+		        xAxis: {
+		            categories: [
+		                'January',
+		                'February',
+		                'March',
+		                'April',
+		                'Mai',
+		                'June',
+		                'July',
+		                'August',
+		                'Septemebr',
+		                'October',
+		                'November',
+		                'December'
+		            ]
+		        },
+		        yAxis: [{
+		            title: {
+		                text: 'Incidents'
+		            }
+		        }],
+		        series: [{
+		        	showInLegend: false,
+		            name: 'Incidents',
+		            color: '#F6511D',
+		            data: [150, 73, 20, 10, 10, 10, 15, 13, 14, 12, 13, 14],
+		        }]
+		    });
+		});
+		$(function () {
+		     Highcharts.chart('incidentsbyyear', {
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: 'Number of Incidents by Year, {current.month}'
+		        },
+		        xAxis: {
+		            categories: [
+		                '2016',
+		                '2015',
+		                '2014',
+		                '2013',
+		                '2012'
+		            ]
+		        },
+		        yAxis: [{
+		            title: {
+		                text: 'Incidents'
+		            }
+		        }],
+		        series: [{
+		        	showInLegend: false,
+		            name: 'Incidents',
+		            color: '#FFB400',
+		            data: [150, 73, 20, 10, 10],
+		            //pointPadding: 0.4,
+		        }]
+		    });
+		});
+		$(function () {
+		     Highcharts.chart('incidentsbyday', {
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: 'Number of Incidents by Year, {current.month}'
+		        },
+		        xAxis: {
+		            categories: [
+		                'Monday',
+		                'Tuesday',
+		                'Wednesday',
+		                'Thursday',
+		                'Friday',
+		                'Saturday',
+		                'Sunday']
+		        },
+		        yAxis: [{
+		            title: {
+		                text: 'Incidents'
+		            }
+		        }],
+		        series: [{
+		        	showInLegend: false,
+		            name: 'Incidents',
+		            color: '#FF9F1C',
+		            data: [150, 73, 20, 10, 10, 10, 15],
+		        }]
+		    });
+		});
+	</script>
+  <!--JAVASCRIPT END-->
+  <title>{{ title }}</title>
   </head>
-  <body style="padding-left:5%; padding-right:5%">
+<<<<<<< HEAD
+  <div id=4></div>
+  <div id=10></div>
+  <body style="padding-left:7%; padding-right:7%">
 
-    <button type="button" class="btn btn-xs btn-link"><a href="index.html">Respond</a></button>
+  <body>
 
-    <h1 style="text-align: center">Historics</h1>
-    <div class="clearfix" >
-    <table class="table table-striped" style="margin:auto">
-      <thead>
-      <tr>
-        <th>Create Time</th>
-        <th>Incident No.</th>
-        <th>Short Description</th>
-        <th>Responded Date/Time</th>
-        <th>Resolved Date/Time</th>
-      </tr>
-      </thead>
-      <tbody>
-      {% for incident in resultList %}
-      <tr>
-        <td>{{incident.createTime}}</td>
-        <td>{{incident.incidentNum}}</td>
-        <td>{{incident.shortDesc}}</td>
-        <td>{{incident.respondedTime}}</td>
-        <td>{{incident.resolvedTime}}</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-    </table>
-    <div class="clearfix">
+<!-- Fixed navbar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" style="font-size:30px">Dofasco Now</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li style="font-size:23px"><a href="#4">Home</a></li>
+                <li style="font-size:23px"><a href="#1">Daily Report</a></li>
+                <li style="font-size:23px"><a href="#2">Historic Report</a></li>
+                <li style="font-size:23px"><a href="#3">Analytics</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+<!-- Announcement Panel -->
+
+  <div style="height:75px"></div>
+  <h1 class="page-header"> Daily Announcements!</h1>
+  <ul class="list">
+    <li style="font-size:27px">Item 1</li>
+    <li style="font-size:27px">Item 2</li>
+    <li style="font-size:27px">Item 3</li>
+  </ul>
+  <hr>
+
+<!-- INDEX -->
+
+        <!-- <div class="container theme-showcase" role="main"> -->
+        <div id=1></div>
+        <div style="height:75px"></div>
+
+        <!-- <div class="container"> -->
+          <div class="row">
+              <div class="col-md-9">
+                <div class="page-header"><h1>Daily Incident Report</h1></div>
+              </div>
+              <div class="col-md-3">
+                  <div class="page-header"><h1>2017-01-29</h1></div>
+              </div>
+        </div>
+
+
+        <div class="clearfix" >
+        <table class="table table-striped" style="margin:auto">
+          <thead>
+          <tr>
+            <th>Create Time</th>
+            <th>Incident No.</th>
+            <th>Short Description</th>
+            <th>Responded Date/Time</th>
+            <th>Resolved Date/Time</th>
+            <th>Feedback</th>
+            <th>Resolve</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for incident in resultList %}
+          {% if 0 %}
+          <tr>
+          {% else %}
+          <tr style="background-color: primary">
+          {%endif%}
+            {%if '2017-01-29 ' in incident.createTime %}
+            <td>{{incident.createTime}}</td>
+            <td>{{incident.incidentNum}}</td>
+            <td>{{incident.shortDesc}}</td>
+            <td>{{incident.respondedTime}}</td>
+            <td>{{incident.resolvedTime}}</td>
+            <td><button type="button" class="btn btn-xs btn-link"><a href="#5">Respond</a></button></td>
+            {% if incident.resolvedTime %}
+              <td>Resolved</td>
+            {% else %}
+              <td><button type="button" class="btn btn-xs btn-link"><a href="#6">Resolve</a></button></td>
+            {% endif %}
+            {%endif%}
+          </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        <div class="clearfix">
+        </div> <!-- /container -->
+
+<!-- HISTORIC -->
+        <div id="2"></div>
+        <div style="height:75px"></div>
+
+
+        <div class="container">
+          <div class="row">
+              <div class="col-md-9">
+                <div class="page-header"><h1>Historic Incident Report</h1></div>
+              </div>
+              <div class="col-md-3">
+              </div>
+        </div>
+
+
+        <div class="clearfix" >
+        <table class="table table-striped" style="margin:auto">
+          <thead>
+          <tr>
+            <th>Create Time</th>
+            <th>Incident No.</th>
+            <th>Short Description</th>
+            <th>Responded Date/Time</th>
+            <th>Resolved Date/Time</th>
+            <th>Feedback</th>
+            <th>Resolve</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for incident in resultList %}
+          <tr>
+            {%if '2017-01-29 ' not in incident.createTime %}
+            <td>{{incident.createTime}}</td>
+            <td>{{incident.incidentNum}}</td>
+            <td>{{incident.shortDesc}}</td>
+            <td>{{incident.respondedTime}}</td>
+            <td>{{incident.resolvedTime}}</td>
+            <td><button type="button" class="btn btn-xs btn-link"><a href="#5">Respond</a></button></td>
+            {% if incident.resolvedTime %}
+              <td>Resolved</td>
+            {% else %}
+              <td><button type="button" class="btn btn-xs btn-link"><a href="#6">Resolve</a></button></td>
+            {% endif %}
+            {% endif %}
+          </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        <div class="clearfix">
+        </div>
+
+
+<!--STATS START-->
+              <div id=3></div>
+              <div style="height:75px"></div>
+              <a name="statistics"></a>
+              <div class="container">
+                <div class="page-header text-left"><h1>Analytics</h1></div>
+              </div>
+
+          		<button type="button" class="btn btn-default pull-right" style="vertical-align: middle">Custom Graph</button>
+          		<div style="padding: 25px"></div>
+          		<div class="clearfix">
+          		<div id="typeofincidents" class ="pull-left" style="width:45%; height:300px"></div>
+          		<div id="incidentsbymonth"  class ="pull-right" style="width:45%; height:300px"></div>
+          		</div>
+          		<div class="clearfix">
+          		<div id="incidentsbyyear" class ="pull-left" style="width:45%; height:300px" ></div>
+          		<div id="incidentsbyday" class ="pull-right" style="width:45%; height:300px"></div>
+            </div>
+<!--STATS END-->
+
+<!-- FEEDBACK -->
+        <div id=5></div>
+        <div style="height:75px"></div>
+        <div class="container">
+          <div class="page-header text-left"><h1>Feedback</h1></div>
+        </div>
+        <div class="container">
+          <div class="row">
+
+              <div class="col-md-4">
+                <div class="container">
+                  <form>
+                    <div class="form-group form-group-central">
+                      <label>Name</label>
+                      <input type="text" class="form-control" plaeholder="Add Name">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input type="email" class="form-control" plaeholder="Add Email">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Message</label>
+                      <textarea class="form-control" style=height:150px plaeholder="Add Message"></textarea>
+                    </div>
+                    <div class="container">
+                      <div class="row">
+                          <div class="col-md-10">
+                          </div>
+                          <div class="col-md-2">
+                            <button type="button" class="btn btn-lg btn-link"><a href="#4">Submit</a></button>
+                          </div>
+                    </div>
+
+              </div>
+              <div style="height:200px"></div>
+        </div>
+
+<!-- RESOLVE -->
+
+    <div id=6></div>
+    <div style="height:75px"></div>
+    <div class="container">
+      <div class="page-header text-left"><h1>Resolution</h1></div>
+    </div>
+    <div class="container">
+      <div class="row">
+
+          <div class="col-md-4">
+            <div class="container">
+              <form>
+                <div class="form-group form-group-central">
+                  <label>Name</label>
+                  <input type="text" class="form-control" plaeholder="Add Name">
+                </div>
+
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" plaeholder="Add Email">
+                </div>
+
+                <div class="form-group">
+                  <label>Message</label>
+                  <textarea class="form-control" style=height:150px plaeholder="Add Message"></textarea>
+                </div>
+                <div class="container">
+                  <div class="row">
+                      <div class="col-md-10">
+                      </div>
+                      <div class="col-md-2">
+                        <button type="button" class="btn btn-lg btn-link"><a href="#4">Submit</a></button>
+                      </div>
+                </div>
+
+          </div>
+
+
+    </div>
+    <div style="height:150px"></div>
+
+<!-- END -->
+
+
+<!-- >>>>>>> 67bf112a377865f72736c5364c4886a159fc356a -->
   </body>
 </html>

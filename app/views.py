@@ -6,7 +6,7 @@ import requests
 
 
 # Create your views here.
-def index(request):
+def newpage(request):
 
     # Set the request parameters
     url = 'https://dev14710.service-now.com/api/now/table/incident'
@@ -51,7 +51,7 @@ def index(request):
     #     print (resultList[n].get("respondedTime") + ",")
     #     print (resultList[n].get("resolvedTime") + ",")
     #     print ("--")
-    c = {'title' : "WTF", 'resultList' :  resultList,}
+    c = {'title' : "This page never loads", 'resultList' :  resultList,}
     # template = loader.get_template('app/base.html')
     return render (request, 'app/base.html', c)
     # return HttpResponse(template.render(c, request))
