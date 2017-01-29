@@ -28,7 +28,7 @@
 		                type: 'pie'
 		            },
 		            title: {
-		                text: 'Type of Incidents, {current.month} {current.year}'
+		                text: 'Type of Incidents, January 2017'
 		            },
 		            tooltip: {
 		                pointFormat: '<b>{point.percentage:.1f}%</b>'
@@ -76,7 +76,7 @@
 		            type: 'column'
 		        },
 		        title: {
-		            text: 'Number of Incidents by Month, {current.year}'
+		            text: 'Number of Incidents by Month, 2016'
 		        },
 		        xAxis: {
 		            categories: [
@@ -113,7 +113,7 @@
 		            type: 'column'
 		        },
 		        title: {
-		            text: 'Number of Incidents by Year, {current.month}'
+		            text: 'Number of Incidents by Year, 2012-2016'
 		        },
 		        xAxis: {
 		            categories: [
@@ -144,7 +144,7 @@
 		            type: 'column'
 		        },
 		        title: {
-		            text: 'Number of Incidents by Year, {current.month}'
+		            text: 'Number of Incidents by Day, January 23-29'
 		        },
 		        xAxis: {
 		            categories: [
@@ -178,7 +178,6 @@
   <div id=10></div>
   <body style="padding-left:7%; padding-right:7%">
 
-  <body>
 
 <!-- Fixed navbar -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -205,13 +204,14 @@
 <!-- Announcement Panel -->
 
   <div style="height:75px"></div>
-  <h1 class="page-header"> Daily Announcements!</h1>
+  <h1 class="page-header"> Daily Announcements</h1>
   <ul class="list">
-    <li style="font-size:27px">Item 1</li>
-    <li style="font-size:27px">Item 2</li>
-    <li style="font-size:27px">Item 3</li>
+    <li style="font-size:27px">{{resultList.0.shortDesc}}</li>
+    <li style="font-size:27px">{{resultList.1.shortDesc}}</li>
+    <li style="font-size:27px">{{resultList.2.shortDesc}}</li>
   </ul>
   <hr>
+
 
 <!-- INDEX -->
 
@@ -267,7 +267,6 @@
         {% endfor %}
         </tbody>
         </table>
-        <div class="clearfix">
         </div> <!-- /container -->
 
 <!-- HISTORIC -->
@@ -378,13 +377,13 @@
                     </div>
 
               </div>
-              <div style="height:20px"></div>
+              <div style="height:200px"></div>
         </div>
 
 <!-- RESOLVE -->
 
     <div id=6></div>
-    <div style="height:20px"></div>
+    <div style="height:75px"></div>
     <div class="container">
       <div class="page-header text-left"><h1>Resolution</h1></div>
     </div>
@@ -421,7 +420,7 @@
 
 
     </div>
-    <div style="height:150px"></div>
+    <div style="height:400px"></div>
 
 <!-- END -->
 
