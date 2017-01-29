@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    {% for incident in resultList %}
+    <p>
+      <b>Time Created:    </b>{{incident.createTime}}<br>
+      <b>Incident Number: </b>{{incident.incidentNum}}<br>
+      <b>Short Desc:      </b>{{incident.shortDesc}}<br>
+      <b>Responded Time:  </b>{{incident.respondedTime}}<br>
+      <b>Resolved Time:   </b>{{incident.resolvedTime}}<br>
+    </p>
+    {% endfor %}
+  </body>
+</html>
