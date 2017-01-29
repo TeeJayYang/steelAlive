@@ -6,9 +6,169 @@
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>{{ title }}</title>
+    <!--JAVASCRIPT START-->
+    <script type="text/javascript" >
+		$(function () {
+		    Highcharts.setOptions({
+		    	colors: ['#F6511D', '#FFB400', '#FF9F1C', '#FF8811', '#FF7F11']
+		    });
+		    var chart;
+			 $(document).ready(function () {
+		        Highcharts.chart('typeofincidents', {
+		            chart: {
+		                plotBackgroundColor: null,
+		                plotBorderWidth: null,
+		                plotShadow: false,
+		                type: 'pie'
+		            },
+		            title: {
+		                text: 'Type of Incidents, {current.month} {current.year}'
+		            },
+		            tooltip: {
+		                pointFormat: '<b>{point.percentage:.1f}%</b>'
+		            },
+		            plotOptions: {
+		                pie: {
+		                    allowPointSelect: true,
+		                    cursor: 'pointer',
+		                    dataLabels: {
+		                        enabled: false
+		                    },
+		                    showInLegend: true
+		                }
+		            },
+		            series: [{
+		                colorByPoint: true,
+		                data: [{
+		                    name: 'Type 1',
+		                    y: 56.33
+		                }, {
+		                    name: 'Type 2',
+		                    y: 24.03,
+		                    sliced: true,
+		                    selected: true
+		                }, {
+		                    name: 'Type 3',
+		                    y: 10.38
+		                }, {
+		                    name: 'Type 4',
+		                    y: 4.77
+		                }, {
+		                    name: 'Type 5',
+		                    y: 0.91
+		                }, {
+		                    name: 'Type 6',
+		                    y: 0.2
+		                }]
+		            }]
+		        });
+		    });
+		});
+		$(function () {
+		     Highcharts.chart('incidentsbymonth', {
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: 'Number of Incidents by Month, {current.year}'
+		        },
+		        xAxis: {
+		            categories: [
+		                'January',
+		                'February',
+		                'March',
+		                'April',
+		                'Mai',
+		                'June',
+		                'July',
+		                'August',
+		                'Septemebr',
+		                'October',
+		                'November',
+		                'December'
+		            ]
+		        },
+		        yAxis: [{
+		            title: {
+		                text: 'Incidents'
+		            }
+		        }],
+		        series: [{
+		        	showInLegend: false,
+		            name: 'Incidents',
+		            color: '#F6511D',
+		            data: [150, 73, 20, 10, 10, 10, 15, 13, 14, 12, 13, 14],
+		        }]
+		    });
+		});
+		$(function () {
+		     Highcharts.chart('incidentsbyyear', {
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: 'Number of Incidents by Year, {current.month}'
+		        },
+		        xAxis: {
+		            categories: [
+		                '2016',
+		                '2015',
+		                '2014',
+		                '2013',
+		                '2012'
+		            ]
+		        },
+		        yAxis: [{
+		            title: {
+		                text: 'Incidents'
+		            }
+		        }],
+		        series: [{
+		        	showInLegend: false,
+		            name: 'Incidents',
+		            color: '#FFB400',
+		            data: [150, 73, 20, 10, 10],
+		            //pointPadding: 0.4,
+		        }]
+		    });
+		});
+		$(function () {
+		     Highcharts.chart('incidentsbyday', {
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: 'Number of Incidents by Year, {current.month}'
+		        },
+		        xAxis: {
+		            categories: [
+		                'Monday',
+		                'Tuesday',
+		                'Wednesday',
+		                'Thursday',
+		                'Friday',
+		                'Saturday',
+		                'Sunday']
+		        },
+		        yAxis: [{
+		            title: {
+		                text: 'Incidents'
+		            }
+		        }],
+		        series: [{
+		        	showInLegend: false,
+		            name: 'Incidents',
+		            color: '#FF9F1C',
+		            data: [150, 73, 20, 10, 10, 10, 15],
+		        }]
+		    });
+		});
+	</script>
+  <!--JAVASCRIPT END-->
+  <title>{{ title }}</title>
   </head>
   <body style="padding-left:5%; padding-right:5%">
+    <!--HISTORICS START-->
     <h1 style="text-align: center">Historics</h1>
     <div class="clearfix" >
     <table class="table table-striped" style="margin:auto">
@@ -36,5 +196,19 @@
     </tbody>
     </table>
     <div class="clearfix">
+    <!--HISTORICS END-->
+    <!--STATS START-->
+    <h1 style="text-align: center"><b>Statistics</b></h1>
+		<button type="button" class="btn btn-default pull-right" style="vertical-align: middle">Custom Graph</button>
+		<div style="padding: 25px"></div>
+		<div class="clearfix">
+		<div id="typeofincidents" class ="pull-left" style="width:45%; height:300px"></div>
+		<div id="incidentsbymonth"  class ="pull-right" style="width:45%; height:300px"></di>
+		</div>
+		<div class="clearfix">
+		<div id="incidentsbyyear" class ="pull-left" style="width:45%; height:300px" ></div>
+		<div id="incidentsbyday" class ="pull-right" style="width:45%; height:300px"></div>
+		</div>
+    <!--STATS END-->
   </body>
 </html>
