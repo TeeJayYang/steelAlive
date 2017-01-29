@@ -36,9 +36,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="file:///Users/Sulagshan/Downloads/bootstrap-3.3.7/docs/examples/theme/index.html">Home</a></li>
-            <li><a href="file:///Users/Sulagshan/Downloads/bootstrap-3.3.7/docs/examples/theme/historic.html">Historic</a></li>
-            <li><a href="file:///Users/Sulagshan/Downloads/bootstrap-3.3.7/docs/examples/theme/statistics.html">Statistics</a></li>
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="historic.html">Historic</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -56,10 +56,46 @@
       </div>
     </nav>
 
-  <!-- begin date selection -->
+    <div style="height:75px"></div>
 
 
-  <!-- end date selection -->
+    <div class="container">
+      <div class="row">
+          <div class="col-md-9">
+            <div class="page-header"><h1>Historic Incident Report</h1></div>
+          </div>
+          <div class="col-md-3">
+          </div>
+    </div>
+
+
+    <div class="clearfix" >
+    <table class="table table-striped" style="margin:auto">
+      <thead>
+      <tr>
+        <th>Create Time</th>
+        <th>Incident No.</th>
+        <th>Short Description</th>
+        <th>Responded Date/Time</th>
+        <th>Resolved Date/Time</th>
+        <th>Feedback</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for incident in resultList %}
+      <tr>
+        <td>{{incident.createTime}}</td>
+        <td>{{incident.incidentNum}}</td>
+        <td>{{incident.shortDesc}}</td>
+        <td>{{incident.respondedTime}}</td>
+        <td>{{incident.resolvedTime}}</td>
+        <td><button type="button" class="btn btn-xs btn-link">Respond</button>
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <div class="clearfix">
+
 
 
     <!-- Bootstrap core JavaScript
