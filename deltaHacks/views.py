@@ -38,8 +38,9 @@ def index(request):
             numericTime = lv[:4]+lv[5:7]+lv[8:10]+lv[11:13]+lv[14:16]+lv[17:19]
             timeNumber = int(numericTime)
             incident = {
-                        'createTime':       results[n].get ("sys_created_on"),
                         'numericTime':      timeNumber,
+                        'urgency':          results[n].get('urgency'),
+                        'createTime':       results[n].get ("sys_created_on"),
                         'incidentNum':      results[n].get ("number"),
                         'shortDesc':        results[n].get("short_description"),
                         'callerId':         results[n].get("caller_id").get("value"),
